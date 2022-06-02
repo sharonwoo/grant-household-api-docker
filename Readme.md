@@ -1,6 +1,15 @@
 # Household & Grant API 
 
+Setup instructions after cloning the repo:
+
+```
+docker-compose build
+docker-compose up
+```
+
 This project uses stock Django and django-rest-framework. It's my first completed non-tutorial project in Django (૭ ｡•̀ ᵕ •́｡ )૭
+
+
 
 Go to http://localhost:8009/ ... but only api/v2/grants-public is visible.
 
