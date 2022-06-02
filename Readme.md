@@ -9,8 +9,6 @@ docker-compose up
 
 This project uses stock Django and django-rest-framework. It's my first completed non-tutorial project in Django (૭ ｡•̀ ᵕ •́｡ )૭
 
-
-
 Go to http://localhost:8009/ ... but only api/v2/grants-public is visible.
 
 Superuser credentials are `admin` and `password` respectively.
@@ -32,6 +30,13 @@ api/v1/grants/
 api/v2/grants-public/
 ```
 
+## Development History 
+
+Because I didn't set this up right for Docker the first time ;A; 
+
+https://github.com/sharonwoo/grant-household-api
+
 ## Requirements
 
 https://docs.google.com/document/d/1YyOJyq460UM3j8EzQsFgR4_VRspXy_tcxv5HRfMthwg/
+
