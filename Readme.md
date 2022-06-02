@@ -32,7 +32,7 @@ api/v2/grants-public/
 
 ## Tests
 
-Model, serializer and tests have been written in pytest but I broke it when I Dockerised :( 
+Model, serializer and tests have been written in pytest but I broke it when I Dockerised :( I chose pytest because it's part of production at work (use what you know, right?).
 
 ## Development History 
 
