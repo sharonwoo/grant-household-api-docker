@@ -7,7 +7,7 @@ docker-compose build
 docker-compose up
 ```
 
-This project uses stock Django and django-rest-framework. It's my first completed non-tutorial project in Django (૭ ｡•̀ ᵕ •́｡ )૭
+This project uses stock Django (db: SQLite) and django-rest-framework. It's my first completed non-tutorial project in Django (૭ ｡•̀ ᵕ •́｡ )૭
 
 Go to http://localhost:8009/ ... but only api/v2/grants-public is visible.
 
@@ -30,6 +30,10 @@ api/v1/grants/
 api/v2/grants-public/
 ```
 
+## Tests
+
+Model, serializer and tests have been written in pytest but I broke it when I Dockerised :( 
+
 ## Development History 
 
 Because I didn't set this up right for Docker the first time ;A; 
@@ -40,3 +44,6 @@ https://github.com/sharonwoo/grant-household-api
 
 https://docs.google.com/document/d/1YyOJyq460UM3j8EzQsFgR4_VRspXy_tcxv5HRfMthwg/
 
+## Next Steps
+
+* Setup Postgres 
