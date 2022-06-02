@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./household-api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./household-api/:/usr/src/household-api/
+    ports:
+      - 8009:8000
+    env_file:
+      - ./household-api/.env.dev
