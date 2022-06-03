@@ -23,16 +23,31 @@ The v1 endpoints show all data and require a login to be accessed.
 ## Endpoints
 
 ```
-api/v1/grants/
+api/v1/households/
 api/v1/households/<household_id>/
 api/v1/family_members/
 api/v1/grants/
 api/v2/grants-public/
 ```
 
+### Household and Family Members (requirements 1-4)
+`api/v1/households/`: GET lists all households, POST to create household
+`api/v1/households/<household_id>/` GET lists 1 household
+`api/v1/family_members/` GET lists all family members, POST creates the family member. For spouses: 
+* Create the first spouse
+* Copy the UUID of the first spouse and enter it as a parameter when creating the second spouse
+* The `marital_status` field has some business logic to update based on whether spouse contains a valid value
+* Non-legal marriages (age below 21 and not between husband & wife) will return an error 
+* Spouses can, however, reside in different households 
+
+### Grant List (requirement 5)
+`api/v1/grants/` and `api/v2/grants-public/`: Use GET with appropriate query parameters `household_income` (integer), `married` (boolean), `age_less_than` (integer) and `age_more_than` (integer).
+
+Testing was done in Postman/django-rest-framework's UI manually initially then I wrote some tests (see below).
+
 ## Tests
 
-Model, serializer and tests have been written in pytest but I broke it when I Dockerised :( I chose pytest because it's part of production at work (use what you know, right?).
+Model, serializer and tests have been written in pytest but I broke it when I Dockerised :( I chose pytest because it's part of production at work (use what you know, right?). If you must know what it looks like, check the development history below...
 
 ## Development History 
 
@@ -44,7 +59,7 @@ https://github.com/sharonwoo/grant-household-api
 
 https://docs.google.com/document/d/1YyOJyq460UM3j8EzQsFgR4_VRspXy_tcxv5HRfMthwg/
 
-## Next Steps
+## Next Steps & Improvements
 
 * Setup Postgres 
 * Fix pytest and setup pytest-cov
