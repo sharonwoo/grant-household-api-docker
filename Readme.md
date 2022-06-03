@@ -11,7 +11,7 @@ This project uses stock Django (db: SQLite) and django-rest-framework. It's my f
 
 Go to http://localhost:8009/ ... but only api/v2/grants-public is visible.
 
-Superuser credentials are `admin` and `password` respectively.
+*Superuser credentials are `admin` and `password` respectively.*
 
 This will unlock the rest of the endpoints which are gated by authentication ... I couldn't really think of a better way to protect the data than that. 
 
@@ -30,6 +30,8 @@ api/v1/grants/
 api/v2/grants-public/
 ```
 
+Don't forget to enter the username and password for v1 endpoints!
+
 ### Household and Family Members (requirements 1-4)
 `api/v1/households/`: GET lists all households, POST to create household
 `api/v1/households/<household_id>/` GET lists 1 household
@@ -42,6 +44,8 @@ api/v2/grants-public/
 
 ### Grant List (requirement 5)
 `api/v1/grants/` and `api/v2/grants-public/`: Use GET with appropriate query parameters `household_income` (integer), `married` (boolean), `age_less_than` (integer) and `age_more_than` (integer).
+
+Pagination is in place and set to 30. 
 
 Testing was done in Postman/django-rest-framework's UI manually initially then I wrote some tests (see below).
 
@@ -62,6 +66,7 @@ https://docs.google.com/document/d/1YyOJyq460UM3j8EzQsFgR4_VRspXy_tcxv5HRfMthwg/
 ## Next Steps & Improvements
 
 * Setup Postgres 
+* Create seed data file and load data that way 
 * Fix pytest and setup pytest-cov
 * Setup black in container (formatting done locally with black)
 * Explore documenting API with Swagger/CoreAPI
