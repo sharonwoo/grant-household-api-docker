@@ -22,18 +22,61 @@ The v1 endpoints show all data and require a login to be accessed.
 ## Assumptions
 
 ## End users & endpoint design
-* End-user of v2 endpoint: 
+* End-user of v2 endpoint `api/v2/grants-public/`: 
     * users who are required to administer a list of households and qualifying family members, for example for grant distribution
     * endpoint serves a front-end which will input the query parameters for the 5 grants given 
     * Format of endpoint: 
-```
+        * data in "results"; the first uuid is household-level
+        * other fields are due to pagination
 
+```
+{
+    "count": 5,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "uuid": "6c9095b2-a69e-4897-af2c-a07235bb842b",
+            "family_members": [
+                {
+                    "uuid": "98859210-1f22-46e6-9f21-3ce179899050"
+                },
+                {
+                    "uuid": "79ed4cbf-a342-47cd-adce-d05d7c1bdfb2"
+                },
+                {
+                    "uuid": "d439cfa1-db92-4862-9efe-6946bc74d1e1"
+                }
+            ]
+        }, 
+        ...
 ```
 
 * End-user of v1 endpoints: 
     * superusers who have credentials to view sensitive data and process it to drive management decisions, e.g. in response to requests on how many households would be impacted by a given grant, the distribution of household demographics such as income, age
     * would be good to ingest data to serve a private front end such as a Tableau dashboard (data pipeline and front end not covered by our test)
+    * Format: 
+        * Spouse ID appears as a primary key
 
+```
+ {
+            "uuid": "6c9095b2-a69e-4897-af2c-a07235bb842b",
+            "housing_type": "HDB",
+            "family_members": [
+                {
+                    "uuid": "98859210-1f22-46e6-9f21-3ce179899050",
+                    "household": "6c9095b2-a69e-4897-af2c-a07235bb842b",
+                    "name": "Name 1",
+                    "gender": "Male",
+                    "marital_status": "Married",
+                    "spouse": "79ed4cbf-a342-47cd-adce-d05d7c1bdfb2",
+                    "occupation_type": "Employed",
+                    "annual_income": 35000,
+                    "date_of_birth": "1987-01-01"
+                },
+    ... ]
+    ... }
+```
 Reasoning: 
 * Requirement given states for grant endpoint to accept search parameters and return results based on 5 grant schemes: 
     * Student Encouragement Bonus: Households and qualifying members children <16 years and income <$100k
@@ -97,5 +140,6 @@ https://docs.google.com/document/d/1YyOJyq460UM3j8EzQsFgR4_VRspXy_tcxv5HRfMthwg/
 * Setup Postgres 
 * Create seed data file and load data that way 
 * Fix pytest and setup pytest-cov
+* Integrate factory_boy in tests 
 * Setup black in container (formatting done locally with black)
 * Explore documenting API with Swagger/CoreAPI
