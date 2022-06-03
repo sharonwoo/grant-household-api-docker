@@ -9,9 +9,9 @@ docker-compose up
 
 This project uses stock Django (db: SQLite) and django-rest-framework. It's my first completed non-tutorial project in Django (૭ ｡•̀ ᵕ •́｡ )૭
 
-Go to http://localhost:8009/ ... but only api/v2/grants-public is visible.
+Go to http://localhost:8009/ ... but only api/v2/grants-public will be visible until authenticated.
 
-*Superuser credentials are `admin` and `password` respectively.*
+**Superuser credentials are `admin` and `password` respectively.**
 
 This will unlock the rest of the endpoints which are gated by authentication ... I couldn't really think of a better way to protect the data than that. 
 
