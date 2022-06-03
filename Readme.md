@@ -19,6 +19,35 @@ The v2 grants-public endpoint is meant to answer the core requirement of `build 
 
 The v1 endpoints show all data and require a login to be accessed.
 
+## Assumptions
+
+## End users & endpoint design
+* End-user of v2 endpoint: 
+    * users who are required to administer a list of households and qualifying family members, for example for grant distribution
+    * endpoint serves a front-end which will input the query parameters for the 5 grants given 
+    * Format of endpoint: 
+```
+
+```
+
+* End-user of v1 endpoints: 
+    * superusers who have credentials to view sensitive data and process it to drive management decisions, e.g. in response to requests on how many households would be impacted by a given grant, the distribution of household demographics such as income, age
+    * would be good to ingest data to serve a private front end such as a Tableau dashboard (data pipeline and front end not covered by our test)
+
+Reasoning: 
+* Requirement given states for grant endpoint to accept search parameters and return results based on 5 grant schemes: 
+    * Student Encouragement Bonus: Households and qualifying members children <16 years and income <$100k
+        * Expected behaviour: Grant endpoints return list of {household_id, family_members: [list of students_that_qualify]}
+    * Family Togetherness Scheme: Husband + wife, children of younger than 18
+        * Expected behaviour: Grant endpoints return list of {household_id, family_members: [husband, wife, and list of any children]}
+        * As marriage is illegal in our API below 21, the minimum household size returned is 3
+    * Elder Bonus and Baby Sunshine Grant: >50 years and <5 years of age respectively
+        * Elder Bonus expected behaviour: Grant endpoints return list of {household_id, family_members: [qualified elders]}
+        * Baby Sunshine Grant expected behaviour: Grant endpoints return list of {household_id, family_members: [qualified babies]}
+    * YOLO GST Grant: households of annual income <$100k
+        * Expected behaviour: Grant endpoints return list of {household_id, family_members: [all household members]} in households of less than 100k annual income 
+* **Returning 1 view for each grant, which would probably be the safest to pass to administrative end users, would safeguard information but contradicts requirement 5a which asks for search parameters AND the ability to return the above grant results**. Search parameters would be meaningless if the grant endpoint didn't return anything outside of inputs valid for the above grants... and I imagine also frustrating for anyone hitting the endpoint / maintaining it with updates for whenever the grant conditions change. Resolution for data privacy is a public-facing endpoint that only has UUIDs (v2), and everything else gated behind authentication 
+
 
 ## Endpoints
 
@@ -51,7 +80,7 @@ Testing was done in Postman/django-rest-framework's UI manually initially then I
 
 ## Tests
 
-Model, serializer and tests have been written in pytest but I broke it when I Dockerised :( I chose pytest because it's part of production at work (use what you know, right?). If you must know what it looks like, check the development history below...
+Model, serializer and view tests have been written in pytest but I broke it when I Dockerised :( I chose pytest because it's part of production at work (use what you know, right?). If you must know what it looks like, check the development history below...
 
 ## Development History 
 
