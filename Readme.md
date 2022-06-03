@@ -33,17 +33,17 @@ api/v2/grants-public/
 Don't forget to enter the username and password for v1 endpoints!
 
 ### Household and Family Members (requirements 1-4)
-`api/v1/households/`: GET lists all households, POST to create household
-`api/v1/households/<household_id>/` GET lists 1 household
-`api/v1/family_members/` GET lists all family members, POST creates the family member. For spouses: 
-* Create the first spouse
-* Copy the UUID of the first spouse and enter it as a parameter when creating the second spouse
-* The `marital_status` field has some business logic to update based on whether spouse contains a valid value
-* Non-legal marriages (age below 21 and not between husband & wife) will return an error 
-* Spouses can, however, reside in different households 
+* `api/v1/households/`: GET lists all households, POST to create household
+* `api/v1/households/<household_id>/` GET lists 1 household
+* `api/v1/family_members/` GET lists all family members, POST creates the family member. For spouses: 
+    * Create the first spouse
+    * Copy the UUID of the first spouse and enter it as a parameter when creating the second spouse
+    * The `marital_status` field has some business logic to update based on whether spouse contains a valid value
+    * Non-legal marriages (age below 21 and not between husband & wife) will return an error 
+    * Spouses can, however, reside in different households 
 
 ### Grant List (requirement 5)
-`api/v1/grants/` and `api/v2/grants-public/`: Use GET with appropriate query parameters `household_income` (integer), `married` (boolean), `age_less_than` (integer) and `age_more_than` (integer).
+* `api/v1/grants/` and `api/v2/grants-public/`: Use GET with appropriate query parameters `household_income` (integer), `married` (boolean), `age_less_than` (integer) and `age_more_than` (integer).
 
 Pagination is in place and set to 30. 
 
