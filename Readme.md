@@ -56,10 +56,12 @@ The v1 endpoints show all data and require a login to be accessed.
     * superusers who have credentials to view sensitive data and process it to drive management decisions, e.g. in response to requests on how many households would be impacted by a given grant, the distribution of household demographics such as income, age
     * would be good to ingest data to serve a private front end such as a Tableau dashboard (data pipeline and front end not covered by our test)
     * Format: 
+        * Similar to above, data in "results"; the first uuid is household-level. The count/next/previous etc is omitted in the example below
         * Spouse ID appears as a primary key
 
 ```
- {
+...
+        {
             "uuid": "6c9095b2-a69e-4897-af2c-a07235bb842b",
             "housing_type": "HDB",
             "family_members": [
