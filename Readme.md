@@ -34,8 +34,8 @@ Don't forget to enter the username and password for v1 endpoints!
 
 ### Household and Family Members (requirements 1-4)
 * `api/v1/households/`: GET lists all households, POST to create household
-* `api/v1/households/<household_id>/` GET lists 1 household
-* `api/v1/family_members/` GET lists all family members, POST creates the family member. For spouses: 
+* `api/v1/households/<household_id>/` GET lists 1 household, DELETE will delete household
+* `api/v1/family_members/` GET lists all family members, POST creates the family member, DELETE `api/v1/family_members/<family_member_id>/` will delete the family member. For spouses: 
     * Create the first spouse
     * Copy the UUID of the first spouse and enter it as a parameter when creating the second spouse
     * The `marital_status` field will update based on whether spouse contains a valid value -- what is entered may be different from the value retrieved from the API
