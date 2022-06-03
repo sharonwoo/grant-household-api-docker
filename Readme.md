@@ -21,7 +21,7 @@ The v1 endpoints show all data and require a login to be accessed.
 
 ## Assumptions
 
-## End users & endpoint design
+### End users & endpoint design
 * End-user of v2 endpoint `api/v2/grants-public/`: 
     * users who are required to administer a list of households and qualifying family members, for example for grant distribution
     * endpoint serves a front-end which will input the query parameters for the 5 grants given 
