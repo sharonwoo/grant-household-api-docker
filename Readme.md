@@ -47,3 +47,6 @@ https://docs.google.com/document/d/1YyOJyq460UM3j8EzQsFgR4_VRspXy_tcxv5HRfMthwg/
 ## Next Steps
 
 * Setup Postgres 
+* Fix pytest and setup pytest-cov
+* Setup black in container (formatting done locally with black)
+* Explore documenting API with Swagger/CoreAPI
